@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}  {% endblock %}
+{% block content %}
+
+<h1>Добавить праздник</h1>
+<p>{{ message }}</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Сохранить</button>
+</form>
+<br>
+<p><a href="{% url 'index'%}"> Домой </a></p>
+<p><a href="{% url 'add_product'%}"> Добавить продукт </a></p>
+
+<p><a href="{% url 'add_purchase'%}"> Добавить покупку </a></p>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Скрыть поля при загрузке страницы
+        $('#id_date, #id_day_week, #id_week, #id_mounth').hide();
+
+        // Обработчик события изменения выбора radio buttons
+        $('input[name="type_holiday"]').change(function() {
+            if ($(this).val() === 'D') {
+                $('#id_date').show();
+                $('#id_day_week, #id_week, #id_mounth').hide();
+            } else if ($(this).val() === 'W') {
+                $('#id_date').hide();
+                $('#id_day_week, #id_week, #id_mounth').show();
+            }
+        });
+    });
+</script>
+{% endblock %}
+

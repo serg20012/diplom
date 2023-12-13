@@ -1,0 +1,41 @@
+body {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem; /* Уменьшил верхний отступ */
+  padding-bottom: 2rem; /* Уменьшил нижний отступ */
+  color: #37474f; /* Темно-синий цвет текста */
+  font: 16px 'Segoe UI', 'Roboto', 'sans-serif'; /* Использовал шрифт Roboto, увеличил размер текста */
+  background-color: #eceff1; /* Светло-синий цвет фона */
+  margin-left: 35px;
+}
+
+input[type="text"] {
+  background-color: #fafafa; /* Белый цвет фона текстового поля */
+  border: 1px solid #546e7a; /* Серый цвет обводки текстового поля */
+  height: 40px; /* Увеличил высоту текстового поля */
+  color: #37474f;
+  padding: 0 12px; /* Увеличил внутренний отступ */
+  vertical-align: middle; /* Выравнивание текста по вертикали по центру */
+}
+
+button {
+  color: #fff;
+  background-color: #2196f3; /* Голубой цвет фона кнопки */
+  border: none;
+  height: 42px; /* Увеличил высоту кнопки */
+  font-family: 'Roboto', sans-serif;
+}
+
+p {
+  margin: 15px 0; /* Уменьшил внешний отступ для абзацев */
+  color: #d32f2f; /* Красный цвет текста абзацев */
+}
+
+/* Стили для подвала */
+footer {
+  padding: 15px; /* Увеличил внутренний отступ подвала */
+  border-top: 1px solid #90a4ae; /* Светло-серая черта над подвалом */
+  margin-top: auto;
+}
+

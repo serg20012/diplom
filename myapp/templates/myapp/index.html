@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+<h1>Выбери действие: </h1>
+<table>
+    <tr>
+        <p> <a href="{% url 'index'%}"> Домой </a></p>
+    </tr>
+    <tr>
+        <p> <a href="{% url 'add_product'%}"> Добавить продукт </a> </p>
+    </tr>
+    <tr>
+        <p> <a href="{% url 'add_purchase'%}"> Добавить покупку </a> </p>
+    </tr>
+    <tr>
+        <p> <a href="{% url 'add_hol'%}"> Добавить праздник </a> </p>
+    </tr>
+<p>Скоро тут появится текст... текст в р </p>
+    Скоро тут появится текст... тескт без р
+</table>
+{% endblock %}
