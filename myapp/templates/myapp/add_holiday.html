@@ -22,16 +22,16 @@
 <script>
     $(document).ready(function() {
         // Скрыть поля при загрузке страницы
-        $('#id_date, #id_day_week, #id_week, #id_mounth').hide();
+        $('#id_date, #id_day_week, #id_week').hide();
 
         // Обработчик события изменения выбора radio buttons
         $('input[name="type_holiday"]').change(function() {
             if ($(this).val() === 'D') {
                 $('#id_date').show();
-                $('#id_day_week, #id_week, #id_mounth').hide();
+                $('#id_day_week, #id_week').hide();
             } else if ($(this).val() === 'W') {
                 $('#id_date').hide();
-                $('#id_day_week, #id_week, #id_mounth').show();
+                $('#id_day_week, #id_week').show();
             }
         });
     });

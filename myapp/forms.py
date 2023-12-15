@@ -1,6 +1,7 @@
 import datetime
 
 from django import forms
+from django.forms import NumberInput
 
 from .models import Product, Purchase, Holiday
 
@@ -26,13 +27,14 @@ class PurchaseForm(forms.ModelForm):
 class HolidaysFormWidget(forms.ModelForm):
     type_holiday = forms.ChoiceField(choices=[('D', 'по дате'), ('W', 'по дню недели')],
                                      widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    date = forms.IntegerField(required=False, min_value=1, max_value=31, widget=NumberInput(attrs={'class': 'form-control'}))
+
 
     class Meta:
         model = Holiday
         fields = ['name', 'type_holiday', 'date', 'day_week', 'week', 'mounth', 'description']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Название праздника'}),
-            'date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'day_week': forms.Select(attrs={'class': 'form-control'}),
             'week': forms.Select(attrs={'class': 'form-control'}),
             'mounth': forms.Select(attrs={'class': 'form-control'}),
@@ -42,6 +44,7 @@ class HolidaysFormWidget(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(HolidaysFormWidget, self).__init__(*args, **kwargs)
         self.fields['type_holiday'].label = "Тип праздника"
+        self.fields['date'].label = "Дата"
 
 # class HolidaysFormWidget(forms.Form):
 #     name = forms.CharField(max_length=30, widget=forms.TextInput(attrs={'class': 'form-control',

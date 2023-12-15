@@ -26,7 +26,7 @@ class Holiday(models.Model):
     name = models.CharField(max_length=30, null=True, blank=False, verbose_name="Повод")
     type_holiday = models.CharField(max_length=2, choices=[('D', 'по дате'), ('W',
                                                 'по дню недели')], verbose_name="Тип праздника")
-    date = models.DateField(null=True, blank=True, verbose_name="Дата")
+    date = models.IntegerField(null=True, blank=True, verbose_name="Дата")
     day_week = models.CharField(max_length=1, choices=[
         (None, '-'),
         ('1', 'понедельник'),
