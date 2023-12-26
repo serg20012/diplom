@@ -9,8 +9,8 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class HolidayAdmin(admin.ModelAdmin):
-    list_display = ['name', 'type_holiday', 'date', 'day_week', 'week', 'mounth', 'description']
-    list_filter = ['date', 'mounth']
+    list_display = ['name', 'type_holiday', 'date', 'day_week', 'week', 'month', 'description']
+    list_filter = ['date', 'month']
 
 class PurchaseAdmin(admin.ModelAdmin):
     list_display = ['product', 'purchase_date', 'holiday']

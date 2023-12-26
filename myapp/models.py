@@ -14,6 +14,7 @@ class Product(models.Model):
     description = models.TextField(null=True, blank=True, verbose_name=u"Описание")
     rating = models.DecimalField(default=0.0, max_digits=3,
                                  decimal_places=2)
+
     class Meta:
         verbose_name = "Товар"
         verbose_name_plural = "Товары"
@@ -25,7 +26,8 @@ class Product(models.Model):
 class Holiday(models.Model):
     name = models.CharField(max_length=30, null=True, blank=False, verbose_name="Повод")
     type_holiday = models.CharField(max_length=2, choices=[('D', 'по дате'), ('W',
-                                                'по дню недели')], verbose_name="Тип праздника")
+                                                                              'по дню недели')],
+                                    verbose_name="Тип праздника")
     date = models.IntegerField(null=True, blank=True, verbose_name="Дата")
     day_week = models.CharField(max_length=1, choices=[
         (None, '-'),
@@ -45,7 +47,7 @@ class Holiday(models.Model):
         ('4', 'четвертая неделя'),
         ('5', 'пятая неделя'),
     ], null=True, blank=True, verbose_name="Неделя")
-    mounth = models.CharField(max_length=2, choices=[
+    month = models.CharField(max_length=2, choices=[
         (None, '-'),
         ('1', 'январь'),
         ('2', 'февраль'),
@@ -69,8 +71,10 @@ class Holiday(models.Model):
     def __str__(self):
         return self.name
 
+
 class Purchase(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name="Название")  # Ссылка на украшение, которое было куплено
+    product = models.ForeignKey(Product, on_delete=models.CASCADE,
+                                verbose_name="Название")  # Ссылка на украшение, которое было куплено
     purchase_date = models.DateField(default=datetime.date.today, verbose_name="Дата покупки")  # Дата покупки
     holiday = models.ForeignKey(Holiday, on_delete=models.SET_NULL, null=True,
                                 blank=True, verbose_name="Повод")  # Ссылка на праздник (если есть)
@@ -80,6 +84,4 @@ class Purchase(models.Model):
         verbose_name_plural = "Покупки"
 
     def __str__(self):
-        return f'{self.product.name} - {self.holiday}'
-
-
+        return self.product.name

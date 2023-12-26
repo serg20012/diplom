@@ -25,19 +25,23 @@ class PurchaseForm(forms.ModelForm):
 
 
 class HolidaysFormWidget(forms.ModelForm):
+    # если оставить в наследовании Widget Select неверно работает со скриптом, RadioSelect есть лишний прочерк
     type_holiday = forms.ChoiceField(choices=[('D', 'по дате'), ('W', 'по дню недели')],
                                      widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    # если оставить в наследовании всегда присваивает значение
     date = forms.IntegerField(required=False, min_value=1, max_value=31, widget=NumberInput(attrs={'class': 'form-control'}))
 
 
     class Meta:
         model = Holiday
-        fields = ['name', 'type_holiday', 'date', 'day_week', 'week', 'mounth', 'description']
+        fields = ['name', 'type_holiday', 'date', 'day_week', 'week', 'month', 'description']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Название праздника'}),
+            # 'type_holiday': forms.RadioSelect(attrs={'class': 'form-control'}),
+            # 'date': forms.Select(attrs={'class': 'form-control'}),
             'day_week': forms.Select(attrs={'class': 'form-control'}),
             'week': forms.Select(attrs={'class': 'form-control'}),
-            'mounth': forms.Select(attrs={'class': 'form-control'}),
+            'month': forms.Select(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
         }
 
@@ -45,6 +49,9 @@ class HolidaysFormWidget(forms.ModelForm):
         super(HolidaysFormWidget, self).__init__(*args, **kwargs)
         self.fields['type_holiday'].label = "Тип праздника"
         self.fields['date'].label = "Дата"
+
+class GetDeltaWidget(forms.Form):
+    date_delta = forms.IntegerField(required=False, min_value=1, max_value=61, widget=NumberInput(attrs={'class': 'form-control'}))
 
 # class HolidaysFormWidget(forms.Form):
 #     name = forms.CharField(max_length=30, widget=forms.TextInput(attrs={'class': 'form-control',
@@ -72,7 +79,7 @@ class HolidaysFormWidget(forms.ModelForm):
 #         ('4', 'четвертая неделя'),
 #         ('5', 'пятая неделя'),
 #     ])
-#     mounth = forms.ChoiceField(choices=[
+#     month = forms.ChoiceField(choices=[
 #         (None, None),
 #         ('1', 'январь'),
 #         ('2', 'февраль'),

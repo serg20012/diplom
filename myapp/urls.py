@@ -8,5 +8,7 @@ urlpatterns = [
     path('products/', views.product_list, name='product_list'),
     path('add_purchase/', views.add_purchase, name='add_purchase'),
     path('add_hol/', views.add_holiday, name='add_hol'),
+    path('check_hol/', views.check_holiday, name='check_hol'),
+
     # path('form/', views.many_fields_form, name='form'),
 ]
