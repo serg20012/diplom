@@ -13,16 +13,17 @@
     <ul>
         {% for item in result %}
             {% for holiday in item %}
-                <li>на праздник: {{ holiday.name }}</li>
+                <li>на праздник: {{ holiday.name }} {% if holiday.description %} (описание: {{ holiday.description }}) {% endif %}
+                </li>
                 {% if holiday.purchase_data.exists %}
-                    <li>было куплено:</li>
+                    было куплено:
                     <ul>
                         {% for purchase_item in holiday.purchase_data %}
                             <li>{{ purchase_item }}</li>
                         {% endfor %}
                     </ul>
                 {% else %}
-                    <li>покупок не было</li>
+                    покупок не было
                 {% endif %}
             {% endfor %}
         {% endfor %}

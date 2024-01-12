@@ -30,8 +30,6 @@ class HolidaysFormWidget(forms.ModelForm):
                                      widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
     # если оставить в наследовании всегда присваивает значение
     date = forms.IntegerField(required=False, min_value=1, max_value=31, widget=NumberInput(attrs={'class': 'form-control'}))
-
-
     class Meta:
         model = Holiday
         fields = ['name', 'type_holiday', 'date', 'day_week', 'week', 'month', 'description']
